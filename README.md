@@ -48,12 +48,3 @@ If you close the terminal but the emulator keeps running (blocking port 8080 or 
 npx kill-port 4000 5001 8080 9099
 ```
 Adjust as needed for whatever ports are chosen for your Firebase components.
-
-### 📂 Project Structure
-src/: React Frontend code.
-
-functions/: Backend Cloud Functions (API logic).
-
-firebase-data/: Saved database state (do not delete unless you want a reset).
-
-.github/: CI/CD workflows (future).
