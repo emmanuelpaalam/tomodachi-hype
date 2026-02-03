@@ -1,16 +1,59 @@
-# React + Vite
+# 🚂 Tomodachi Life: Living the Dream - Hype Countdown
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A basic by-day countdown dashboard built to simulate the release of Tomodachi Life.
+This project serves as a **Reference Implementation** for our Capstone tech stack.
 
-Currently, two official plugins are available:
+## 🛠 Tech Stack
+* **Frontend:** React + Vite
+* **Backend:** Firebase Cloud Functions (Node.js)
+* **Database:** Firebase Firestore (NoSQL)
+* **Testing:** Jest + React Testing Library
+* **Emulation:** Firebase Local Emulator Suite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+### Prerequisites
+You must have the following installed:
+* **Node.js** (v18 or higher)
+* **Java** (Required to run the Firebase Emulators)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Installation
+```bash
+npm install
+```
 
-## Expanding the ESLint configuration
+#### Running the App (The "One Command" Solution)
+We use a custom script to launch the React Frontend and the Backend Emulators simultaneously.
+```bash
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Frontend: http://localhost:5173
+-Emulator UI: http://localhost:4000 (Use this to view the database)
+- Functions Port: 5001
+- Firestore Port: 8080
+The following ports are assumed to be the defaults you are given; defaults are fine for this "toy" project.
+
+Note: The app has "persistence" enabled. If you restart the server, the Hype count will remain because it saves to the ./firebase-data folder on exit.
+
+### 🧪 Testing
+We use Jest for unit and integration testing. We mock Firebase, so you do not need the emulators running to run tests.
+```
+npm test
+```
+
+### 🚑 Troubleshooting
+If you close the terminal but the emulator keeps running (blocking port 8080 or 4000), run this command to kill it:
+```
+npx kill-port 4000 5001 8080 9099
+```
+Adjust as needed for whatever ports are chosen for your Firebase components.
+
+### 📂 Project Structure
+src/: React Frontend code.
+
+functions/: Backend Cloud Functions (API logic).
+
+firebase-data/: Saved database state (do not delete unless you want a reset).
+
+.github/: CI/CD workflows (future).
